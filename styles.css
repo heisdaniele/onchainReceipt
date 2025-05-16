@@ -1,0 +1,111 @@
+/* Custom styles beyond Tailwind */
+
+/* Fade in animation for modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#receipt-modal.active {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+#receipt-modal.active > div {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Active tab styling */
+.tab-button.active {
+  background-color: white;
+  color: #111827;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Truncate long text with ellipsis */
+.truncate-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Responsive table adjustments */
+@media (max-width: 768px) {
+  .responsive-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4b5fd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+/* Print styles */
+@media print {
+  #printable-receipt {
+    all: initial;
+    * {
+      all: unset;
+      display: block;
+      font-family: sans-serif;
+      color: black;
+    }
+  }
+}
+
+/* PDF-specific cleanup */
+#printable-receipt {
+  width: 100%;
+  max-width: 800px;
+  padding: 40px;
+  background: white;
+  color: black;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#printable-receipt h1,
+#printable-receipt h2,
+#printable-receipt h3 {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+#printable-receipt table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+#printable-receipt th,
+#printable-receipt td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+#printable-receipt .section {
+  margin-bottom: 20px;
+}
