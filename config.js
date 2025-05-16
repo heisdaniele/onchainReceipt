@@ -1,9 +1,9 @@
 // EmailJS Configuration
 const config = {
   emailjs: {
-    publicKey: 'aXX5DD5himEFlgADr',
-    serviceId: 'service_1xpxki8',
-    templateId: 'template_i9mvzoi'
+    publicKey: process.env.EMAILJS_PUBLIC_KEY || 'aXX5DD5himEFlgADr',
+    serviceId: process.env.EMAILJS_SERVICE_ID || 'service_1xpxki8',
+    templateId: process.env.EMAILJS_TEMPLATE_ID || 'template_i9mvzoi'
   },
   baseNetwork: {
     rpcUrl: 'https://mainnet.base.org',
