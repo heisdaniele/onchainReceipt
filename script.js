@@ -96,21 +96,27 @@ document.addEventListener('DOMContentLoaded', function() {
   // Transaction validation
   async function validateTransaction(txHash) {
     try {
+      console.log('Starting transaction validation for:', txHash);
       validateButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i>Validating...';
       validateButton.disabled = true;
 
       // Initialize ethers provider
       const provider = new ethers.providers.JsonRpcProvider('https://mainnet.base.org');
+      console.log('Provider initialized');
       
       // Get transaction receipt
+      console.log('Fetching transaction receipt...');
       const receipt = await provider.getTransactionReceipt(txHash);
+      console.log('Receipt received:', receipt);
       
       if (!receipt) {
         throw new Error('Transaction not found');
       }
 
       // Get transaction details
+      console.log('Fetching transaction details...');
       const tx = await provider.getTransaction(txHash);
+      console.log('Transaction details:', tx);
       
       // USDC contract on Base
       const usdcAddress = '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913';
@@ -161,9 +167,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Transaction form submission
-  transactionForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
+  // Transaction validation button click handler
+  validateButton.addEventListener('click', async function() {
     const txId = transactionIdInput.value.trim();
     if (txId) {
       await validateTransaction(txId);
