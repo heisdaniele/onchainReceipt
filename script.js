@@ -1,5 +1,12 @@
 import config from './config.js';
 
+// Debug logging for configuration
+console.log('Config loaded:', {
+  publicKey: config.emailjs.publicKey,
+  serviceId: config.emailjs.serviceId,
+  templateId: config.emailjs.templateId
+});
+
 // Constants
 const EMAILJS_PUBLIC_KEY = config.emailjs.publicKey;
 const EMAILJS_SERVICE_ID = config.emailjs.serviceId;
@@ -15,7 +22,9 @@ const STORAGE_KEYS = {
 
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize EmailJS
+  console.log('Initializing EmailJS with public key:', EMAILJS_PUBLIC_KEY);
   emailjs.init(EMAILJS_PUBLIC_KEY);
+  console.log('EmailJS initialized');
 
   // Initialize user data from localStorage
   initializeUserData();
